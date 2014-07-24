@@ -101,21 +101,24 @@ class Moto
     /**
      * @var integer
      *
-     * @ORM\Column(name="country", type="integer")
+     * @ORM\ManyToOne(targetEntity="Aedes\AddressBundle\Entity\Country")
+     * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
      */
     private $country;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="city", type="integer")
+     * @ORM\ManyToOne(targetEntity="Aedes\AddressBundle\Entity\City")
+     * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
      */
     private $city;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="area", type="integer")
+     * @ORM\ManyToOne(targetEntity="Aedes\AddressBundle\Entity\Area")
+     * @ORM\JoinColumn(name="area_id", referencedColumnName="id")
      */
     private $area;
 
