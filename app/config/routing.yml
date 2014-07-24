@@ -3,6 +3,11 @@ aedes_moto:
     type:     annotation
     prefix:   /
 
+aedes_address:
+    resource: "@AedesAddressBundle/Controller/"
+    type:     annotation
+    prefix:   /address
+
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
