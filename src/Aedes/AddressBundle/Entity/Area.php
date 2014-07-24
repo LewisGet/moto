@@ -31,14 +31,16 @@ class Area
     /**
      * @var integer
      *
-     * @ORM\Column(name="country_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="Country")
+     * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
      */
     private $countryId;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="city_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="City")
+     * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
      */
     private $cityId;
 
