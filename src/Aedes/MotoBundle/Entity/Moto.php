@@ -31,7 +31,7 @@ class Moto
     /**
      * @var integer
      *
-     * @ORM\Column(name="price", type="integer")
+     * @ORM\Column(name="price", type="integer", nullable=true)
      */
     private $price;
 
@@ -125,23 +125,13 @@ class Moto
     /**
      * @var string
      *
-     * @ORM\Column(name="image1", type="string", length=255)
+     * @ORM\ManyToMany(targetEntity="Aedes\ImageBundle\Entity\Image")
+     * @ORM\JoinTable(name="image_moto_map",
+     *      joinColumns={@ORM\JoinColumn(name="moto_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="image_id", referencedColumnName="id")}
+     *      )
      */
-    private $image1;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="image2", type="string", length=255)
-     */
-    private $image2;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="image3", type="string", length=255)
-     */
-    private $image3;
+    private $image;
 
 
     /**
@@ -477,71 +467,25 @@ class Moto
     }
 
     /**
-     * Set image1
+     * Set image
      *
-     * @param string $image1
+     * @param string $image
      * @return Moto
      */
-    public function setImage1($image1)
+    public function setImage($image)
     {
-        $this->image1 = $image1;
+        $this->image = $image;
 
         return $this;
     }
 
     /**
-     * Get image1
+     * Get image
      *
      * @return string 
      */
-    public function getImage1()
+    public function getImage()
     {
-        return $this->image1;
-    }
-
-    /**
-     * Set image2
-     *
-     * @param string $image2
-     * @return Moto
-     */
-    public function setImage2($image2)
-    {
-        $this->image2 = $image2;
-
-        return $this;
-    }
-
-    /**
-     * Get image2
-     *
-     * @return string 
-     */
-    public function getImage2()
-    {
-        return $this->image2;
-    }
-
-    /**
-     * Set image3
-     *
-     * @param string $image3
-     * @return Moto
-     */
-    public function setImage3($image3)
-    {
-        $this->image3 = $image3;
-
-        return $this;
-    }
-
-    /**
-     * Get image3
-     *
-     * @return string 
-     */
-    public function getImage3()
-    {
-        return $this->image3;
+        return $this->image;
     }
 }
