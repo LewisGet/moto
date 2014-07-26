@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new Aedes\MotoBundle\AedesMotoBundle(),
             new Aedes\UserBundle\AedesUserBundle(),
             new Aedes\AddressBundle\AedesAddressBundle(),
+            new Aedes\ImageBundle\AedesImageBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

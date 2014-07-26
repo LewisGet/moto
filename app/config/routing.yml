@@ -8,6 +8,11 @@ aedes_address:
     type:     annotation
     prefix:   /address
 
+aedes_image:
+    resource: "@AedesImageBundle/Controller/"
+    type:     annotation
+    prefix:   /image
+
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
