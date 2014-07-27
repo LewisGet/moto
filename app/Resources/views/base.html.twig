@@ -6,12 +6,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Welcome!{% endblock %}</title>
 		{% stylesheets
+			'src/Aedes/css/*.css'
 			'vendor/bootstrap-3.2.0-dist/css/*.css'
 			filter='cssrewrite'
 		%}
 			<link rel="stylesheet" href="{{ asset_url }}" />
 		{% endstylesheets %}
 		{% javascripts
+			'src/Aedes/js/*.js'
 			'vendor/bootstrap-3.2.0-dist/*/*.min.js'
 			'vendor/jQuery/*.min.js'
 		%}
