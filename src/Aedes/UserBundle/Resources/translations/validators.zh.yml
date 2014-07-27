@@ -1,0 +1,25 @@
+fos_user:
+    username:
+        already_used: 帳號已被使用
+        blank: 請輸入帳號
+        short: "[-Inf,Inf]帳號字數不足"
+        long: "[-Inf,Inf]帳號字數超過限制"
+    email:
+        already_used: 電子郵件信箱已被使用
+        blank: 請輸入電子郵件信箱
+        short: "[-Inf,Inf]電子郵件信箱字數不足"
+        long: "[-Inf,Inf]電子郵件信箱字數超過限制"
+        invalid: 電子郵件信箱格式錯誤
+    password:
+        blank: 請輸入密碼
+        short: "[-Inf,Inf]密碼字數不足"
+        mismatch: 兩次輸入的密碼不同
+    new_password:
+        blank: 請輸入新密碼
+        short: "[-Inf,Inf]新密碼字數不足"
+    current_password:
+        invalid: 密碼格式不正確
+    group:
+        blank: 請輸入群組名稱
+        short: "[-Inf,Inf]群組名稱字數不足"
+        long: "[-Inf,Inf]群組名稱字數超過限制"

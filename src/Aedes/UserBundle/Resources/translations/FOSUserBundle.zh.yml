@@ -1,0 +1,96 @@
+# Group
+group:
+    edit:
+        submit: 更新群組
+    show:
+        name: 群組名稱
+    new:
+        submit: 建立群組
+    flash:
+        updated: 群組已更新
+        created: 群組已建立
+        deleted: 群組已刪除
+
+# Security
+"Bad credentials": 帳號或密碼不正確
+
+security:
+    login:
+        username: 帳號：
+        password: 密碼：
+        remember_me: 記住帳密
+        submit: 登入
+
+# Profile
+profile:
+    show:
+        username: 帳號
+        email: 電子郵件信箱
+    edit:
+        submit: 更新
+    flash:
+        updated: 帳户已更新
+
+# Password change
+change_password:
+    submit: 修改密碼
+    flash:
+        success: 密碼修改已成功
+
+# Registration
+registration:
+    check_email: 系統向%email%發送了一封認證信件，請點擊信件中的認證連結來啟用帳户。
+    confirmed: %username%，恭喜你，你的帳户已啟用！
+    back: 回上一頁
+    submit: 註冊
+    flash:
+        user_created: 帳户已建立
+    email:
+        subject: %username%，歡迎你
+        message: |
+            %username%，你好！
+
+            要啟用你的帳户，請點選此連結：%confirmationUrl%
+
+            感謝你的加入
+            白紋資訊開發團隊 http://web.aedesweb.com
+
+# Password resetting
+resetting:
+    password_already_requested: 你在24小時內已經申請過找回密碼。
+    check_email: 系統向%email%重新寄送了一封認證信件，請查收。
+    request:
+        invalid_username: 帳號“%username%”不存在
+        username: 帳號或電子郵件信箱：
+        submit: 重設密碼
+    reset:
+        submit: 修改密碼
+    flash:
+        success: 密碼已重设。
+    email:
+        subject: 重設密碼
+        message: |
+            %username%，你好！
+
+            請點擊連結 %confirmationUrl% 重設你的帳户密碼。
+
+            感謝你的使用
+            白紋資訊開發團隊 http://web.aedesweb.com
+
+# Global strings
+layout:
+    logout: 登出
+    login: 登入
+    register: 註冊
+    logged_in_as: 已登入：%username%
+
+# Form field labels
+form:
+    group_name: 群組名稱：
+    username: 帳號：
+    email: 電子郵件信箱：
+    current_password: 目前密碼：
+    password: 密碼：
+    password_confirmation: 確認密碼：
+    new_password: 新密碼：
+    new_password_confirmation: 確認新密碼：
