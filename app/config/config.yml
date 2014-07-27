@@ -83,6 +83,7 @@ vich_uploader:
             namer:              aedes_image.name_md5
 
 mopa_bootstrap:
+    menu: ~
     form:
         show_legend: false
         collection:

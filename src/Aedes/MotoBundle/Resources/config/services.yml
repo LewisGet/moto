@@ -1,0 +1,13 @@
+services:
+    aedes_moto.menu_builder:
+        class: Aedes\MotoBundle\Menu\Builder
+        arguments: ["@knp_menu.factory", '@security.context']
+
+    aedes_moto.menu.main:
+        class: Knp\Menu\MenuItem # the service definition requires setting the class
+        factory_service: aedes_moto.menu_builder
+        factory_method: createMainMenu
+        arguments: ["@request"]
+        scope: request # needed as we have the request as a dependency here
+        tags:
+            - { name: knp_menu.menu, alias: main } # The alias is what is used to retrieve the menu

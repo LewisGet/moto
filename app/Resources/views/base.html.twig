@@ -19,11 +19,33 @@
 		%}
 			<script type="text/javascript" src="{{ asset_url }}"></script>
 		{% endjavascripts %}
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+			<style>
+				body
+				{
+					padding-top: 70px;
+				}
+			</style>
+		{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body class="container">
-        {% block body %}{% endblock %}
+		<header>
+			{% embed '@MopaBootstrap/Navbar/navbar.html.twig' with { fixedTop: true } %}
+				{% block brand %}
+					<a class="navbar-brand" href="#">AEdes Moto</a>
+				{% endblock %}
+
+				{% block menu %}
+					{{ mopa_bootstrap_menu('main', {'automenu': 'navbar'}) }}
+				{% endblock %}
+			{% endembed %}
+		</header>
+
+		<div class="wrap">
+			{% block body %}{% endblock %}
+		</div>
+
         {% block javascripts %}{% endblock %}
     </body>
 </html>

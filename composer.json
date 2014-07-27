@@ -22,6 +22,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "vich/uploader-bundle": "~0.9.0",
+        "knplabs/knp-menu": "1.1.2",
+        "knplabs/knp-menu-bundle": "1.1.2",
         "mopa/bootstrap-bundle": "dev-master"
     },
     "require-dev": {
