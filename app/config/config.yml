@@ -81,3 +81,13 @@ vich_uploader:
             upload_destination: %kernel.root_dir%/../web/images/upload
             #namer:              vich_uploader.namer_uniqid
             namer:              aedes_image.name_md5
+
+mopa_bootstrap:
+    form:
+        show_legend: false
+        collection:
+            widget_remove_btn:
+                icon: trash
+                icon_inverted: true
+            widget_add_btn:
+                icon: plus-sign
