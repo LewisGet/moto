@@ -18,7 +18,7 @@ use Aedes\MotoBundle\Form\MotoType;
 /**
  * Moto controller.
  *
- * @Route("/moto")
+ * @Route("/")
  */
 class MotoController extends Controller
 {
@@ -136,7 +136,7 @@ class MotoController extends Controller
     /**
      * Finds and displays a Moto entity.
      *
-     * @Route("/{id}", name="moto_show")
+     * @Route("/detail/{id}", name="moto_show")
      * @Method("GET")
      * @Template()
      */
@@ -161,7 +161,7 @@ class MotoController extends Controller
     /**
      * Displays a form to edit an existing Moto entity.
      *
-     * @Route("/{id}/edit", name="moto_edit")
+     * @Route("/edit/{id}", name="moto_edit")
      * @Method("GET")
      * @Template()
      */
@@ -212,7 +212,7 @@ class MotoController extends Controller
     /**
      * Edits an existing Moto entity.
      *
-     * @Route("/{id}", name="moto_update")
+     * @Route("/update/{id}", name="moto_update")
      * @Method("PUT")
      * @Template("AedesMotoBundle:Moto:edit.html.twig")
      */
@@ -245,7 +245,7 @@ class MotoController extends Controller
     /**
      * Deletes a Moto entity.
      *
-     * @Route("/{id}", name="moto_delete")
+     * @Route("/delete/{id}", name="moto_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)

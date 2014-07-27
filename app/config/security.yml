@@ -25,7 +25,7 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/image/new, role: ROLE_USER }
-        - { path: ^/moto/new, role: ROLE_USER }
+        - { path: ^/new, role: ROLE_USER }
 
     acl:
         connection: default
