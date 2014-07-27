@@ -33,7 +33,7 @@
 		<header>
 			{% embed '@MopaBootstrap/Navbar/navbar.html.twig' with { fixedTop: true, inverse: true } %}
 				{% block brand %}
-					<a class="navbar-brand" href="#">AEdes Moto</a>
+					<a class="navbar-brand" href="{{ path("moto") }}">AEdes Moto</a>
 				{% endblock %}
 
 				{% block menu %}
