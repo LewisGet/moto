@@ -2,11 +2,25 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Welcome!{% endblock %}</title>
+		{% stylesheets
+			'vendor/bootstrap-3.2.0-dist/css/*.css'
+			filter='cssrewrite'
+		%}
+			<link rel="stylesheet" href="{{ asset_url }}" />
+		{% endstylesheets %}
+		{% javascripts
+			'vendor/bootstrap-3.2.0-dist/*/*.min.js'
+			'vendor/jQuery/*.min.js'
+		%}
+			<script type="text/javascript" src="{{ asset_url }}"></script>
+		{% endjavascripts %}
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
+    <body class="container">
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
