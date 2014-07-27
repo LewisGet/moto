@@ -1,7 +1,7 @@
 修改 Bootstrap Form 設定
 ====
 
-Bootstrap Form 是使用 phiamo/MopaBootstrapBundle
+Bootstrap Form 是使用 https://github.com/phiamo/MopaBootstrapBundle
 
 詳細文件請參考
 
@@ -13,9 +13,23 @@ http://knpbundles.com/phiamo/MopaBootstrapBundle#configuration
 
 使用者系統我們採用 https://github.com/FriendsOfSymfony/FOSUserBundle
 
+初始於 Aedes/UserBundle
+
 詳細文件請參考
 
 https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/index.md
+
+
+主選單
+====
+
+主選單使用 https://github.com/KnpLabs/KnpMenuBundle
+
+初始 與 DI 設定檔在 Aedes/MotoBundle
+
+詳細文件請參考
+
+https://github.com/KnpLabs/KnpMenuBundle/blob/master/Resources/doc/index.md
 
 
 Moto Bundle
