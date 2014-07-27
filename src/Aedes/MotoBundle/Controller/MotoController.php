@@ -2,6 +2,7 @@
 
 namespace Aedes\MotoBundle\Controller;
 
+use Aedes\MotoBundle\Helper\Filter;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
 use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
@@ -33,12 +34,27 @@ class MotoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('AedesMotoBundle:Moto')->findAll();
+        $repository = $em->getRepository('AedesMotoBundle:Moto');
+
+        $entities = Filter::find($repository, $this->getRequest(),
+            array(
+                'like' => array(
+                    'title'
+                ),
+                'same' => array(
+                    'id'
+                ),
+                'between' => array(
+                    'years'
+                )
+            )
+        );
 
         return array(
             'entities' => $entities,
         );
     }
+
     /**
      * Creates a new Moto entity.
      *
