@@ -2,6 +2,7 @@
 
 namespace Aedes\MotoBundle\Form;
 
+use Aedes\ImageBundle\Form\Type\ImageType;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -29,7 +30,8 @@ class MotoType extends AbstractType
             ->add('modifiedContent')
             ->add('tradingContent')
             ->add('brand')
-            ->add('image', null, array(
+            ->add('image', new ImageType(), array(
+                'class' => 'AedesImageBundle:Image',
                 'query_builder' =>  function(EntityRepository $er)
                 {
                     return $er->createQueryBuilder('o')

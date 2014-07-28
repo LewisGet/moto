@@ -1,0 +1,12 @@
+{% block image_widget %}
+	{% spaceless %}
+		{% for image in form.vars.choices %}
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" name="{{ form.vars.full_name }}" value="{{ image.data.id }}" />
+					<img src="{{ vich_uploader_asset(image.data, 'imageFile') }}" alt="{{ image.data.imageName }}" />
+				</label>
+			</div>
+		{% endfor %}
+	{% endspaceless %}
+{% endblock %}
