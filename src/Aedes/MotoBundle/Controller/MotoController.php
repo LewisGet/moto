@@ -33,10 +33,12 @@ class MotoController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
+        $request = $this->getRequest();
+        $paginator  = $this->get('knp_paginator');
 
         $repository = $em->getRepository('AedesMotoBundle:Moto');
 
-        $entities = Filter::find($repository, $this->getRequest(),
+        $query = Filter::find($repository, $request, "o",
             array(
                 'like' => array(
                     'title'
@@ -50,8 +52,15 @@ class MotoController extends Controller
             )
         );
 
+
+        $pagination = $paginator->paginate(
+            $query,
+            $request->query->get('page', 1),
+            10
+        );
+
         return array(
-            'entities' => $entities,
+            'pagination' => $pagination
         );
     }
 

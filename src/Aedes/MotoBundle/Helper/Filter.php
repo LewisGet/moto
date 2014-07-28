@@ -12,6 +12,7 @@ class Filter
      *
      * @param \Doctrine\Common\Persistence\ObjectRepository $repository
      * @param Request                                       $request
+     * @param string                                        $alias
      * @param array                                         $option
      *
      * $option 詳細設定如下
@@ -23,7 +24,7 @@ class Filter
      *
      * @return  Mixed
      */
-    public static function find(ObjectRepository $repository, Request $request,
+    public static function find(ObjectRepository $repository, Request $request, $alias = "o",
                                 array $option = array("like" => array("title"), "same" => array(), "between" => array()))
     {
         $like = array();
@@ -41,7 +42,7 @@ class Filter
                 continue;
             }
 
-            $like[] = "o.{$likeFilterName} LIKE '%{$value}%'";
+            $like[] = "{$alias}.{$likeFilterName} LIKE '%{$value}%'";
         }
 
         if (! empty($like))
@@ -59,7 +60,7 @@ class Filter
                 continue;
             }
 
-            $same[] = "o.{$sameFilterName} = '{$value}'";
+            $same[] = "{$alias}.{$sameFilterName} = '{$value}'";
         }
 
         if (! empty($same))
@@ -74,12 +75,12 @@ class Filter
 
             if (! empty($max))
             {
-                $between[] = "o.{$betweenFilterName} <= '{$max}'";
+                $between[] = "{$alias}.{$betweenFilterName} <= '{$max}'";
             }
 
             if (! empty($min))
             {
-                $between[] = "o.{$betweenFilterName} >= '{$min}'";
+                $between[] = "{$alias}.{$betweenFilterName} >= '{$min}'";
             }
         }
 
@@ -88,6 +89,6 @@ class Filter
             $queryBuilder->andWhere(implode(" AND ", $between));
         }
 
-        return $queryBuilder->getQuery()->getResult();
+        return $queryBuilder->getQuery();
     }
 }

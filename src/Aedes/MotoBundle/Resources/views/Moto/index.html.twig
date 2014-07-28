@@ -3,11 +3,19 @@
 {% block body -%}
     <h1>Moto list</h1>
 
-    <table class="records_list">
+	<div class="count">
+		共 {{ pagination.getTotalItemCount }} 筆資料
+	</div>
+
+	<div class="navigation">
+		{{ knp_pagination_render(pagination) }}
+	</div>
+
+    <table class="table table-striped records_list">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Title</th>
+				<th{% if pagination.isSorted('o.title') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Title', 'o.title') }}</th>
                 <th>Price</th>
                 <th>Status</th>
                 <th>Displacement</th>
@@ -23,7 +31,7 @@
             </tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
+        {% for entity in pagination %}
             <tr>
                 <td><a href="{{ path('moto_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.title }}</td>
