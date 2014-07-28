@@ -32,6 +32,28 @@ https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/inde
 https://github.com/KnpLabs/KnpMenuBundle/blob/master/Resources/doc/index.md
 
 
+圖片上傳
+====
+
+圖片上傳使用 https://github.com/dustin10/VichUploaderBundle
+
+初始 與 DI 設定檔在 Aedes/ImageBundle
+
+詳細文件請參考
+
+https://github.com/dustin10/VichUploaderBundle/blob/master/Resources/doc/index.md
+
+
+分頁功能
+====
+
+分頁功能使用 https://github.com/KnpLabs/KnpPaginatorBundle
+
+詳細文件請參考
+
+https://github.com/KnpLabs/KnpPaginatorBundle
+
+
 Moto Bundle
 ====
 
