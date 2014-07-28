@@ -31,9 +31,11 @@ class ImageController extends Controller
      */
     public function indexAction()
     {
+        $user = $this->getUser();
+
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('AedesImageBundle:Image')->findAll();
+        $entities = $em->getRepository('AedesImageBundle:Image')->findBy(array("createBy" => $user));
 
         return array(
             'entities' => $entities,
