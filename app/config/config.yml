@@ -72,6 +72,9 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: Aedes\UserBundle\Entity\User
+    profile:
+        form:
+            type: aedes_user_profile
 
 vich_uploader:
     db_driver: orm

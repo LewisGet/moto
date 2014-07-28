@@ -1,0 +1,6 @@
+services:
+    aedes_user.profile.form.type:
+        class: Aedes\UserBundle\Form\Type\ProfileFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: aedes_user_profile }

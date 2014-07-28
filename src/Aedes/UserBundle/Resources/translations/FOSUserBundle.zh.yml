@@ -94,3 +94,7 @@ form:
     password_confirmation: 確認密碼：
     new_password: 新密碼：
     new_password_confirmation: 確認新密碼：
+    phone: 電話
+    mobile: 手機
+    contact: 其它聯絡方式
+    ez_time: 方便聯絡時間
