@@ -34,11 +34,25 @@ class ImageController extends Controller
         $user = $this->getUser();
 
         $em = $this->getDoctrine()->getManager();
+        $request = $this->getRequest();
+        $paginator  = $this->get('knp_paginator');
 
-        $entities = $em->getRepository('AedesImageBundle:Image')->findBy(array("createBy" => $user));
+        $queryBuilder = $em->getRepository('AedesImageBundle:Image')->createQueryBuilder("o");
+
+        $queryBuilder
+            ->where('o.createBy = :user')
+            ->setParameter("user", $user);
+
+        $query = $queryBuilder->getQuery();
+
+        $pagination = $paginator->paginate(
+            $query,
+            $request->query->get('page', 1),
+            10
+        );
 
         return array(
-            'entities' => $entities,
+            'pagination' => $pagination
         );
     }
     /**
