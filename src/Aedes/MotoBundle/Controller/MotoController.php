@@ -2,6 +2,8 @@
 
 namespace Aedes\MotoBundle\Controller;
 
+use Aedes\MotoBundle\Filter\MotoFilter;
+use Aedes\MotoBundle\Form\MotoFilterType;
 use Aedes\MotoBundle\Helper\Filter;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
@@ -39,17 +41,7 @@ class MotoController extends Controller
         $repository = $em->getRepository('AedesMotoBundle:Moto');
 
         $query = Filter::find($repository, $request, "o",
-            array(
-                'like' => array(
-                    'title'
-                ),
-                'same' => array(
-                    'id'
-                ),
-                'between' => array(
-                    'years'
-                )
-            )
+            MotoFilter::listFilter()
         );
 
 
@@ -59,8 +51,12 @@ class MotoController extends Controller
             10
         );
 
+        $filterForm = $this->createFilterForm("moto");
+        $filterForm->handleRequest($request);
+
         return array(
-            'pagination' => $pagination
+            'pagination' => $pagination,
+            'filter' => $filterForm->createView()
         );
     }
 
@@ -125,6 +121,20 @@ class MotoController extends Controller
             'action' => $this->generateUrl('moto_create'),
             'method' => 'POST',
         ));
+
+        $form->add('submit', 'submit', array('label' => 'Create'));
+
+        return $form;
+    }
+
+    private function createFilterForm($actionRouteName)
+    {
+        $motoType = new MotoFilterType(MotoFilter::listFilter());
+
+        $form = $this->createForm($motoType, null, array(
+                'action' => $this->generateUrl($actionRouteName),
+                'method' => 'GET',
+            ));
 
         $form->add('submit', 'submit', array('label' => 'Create'));
 

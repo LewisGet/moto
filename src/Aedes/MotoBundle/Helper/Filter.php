@@ -25,17 +25,19 @@ class Filter
      * @return  Mixed
      */
     public static function find(ObjectRepository $repository, Request $request, $alias = "o",
-                                array $option = array("like" => array("title"), "same" => array(), "between" => array()))
+                                array $option = array("filterName" => "filter", "like" => array("title"), "same" => array(), "between" => array()))
     {
         $like = array();
         $same = array();
         $between = array();
 
+        $filter = $request->query->get($option['filterName'], array());
+
         $queryBuilder = $repository->createQueryBuilder($alias);
 
         foreach($option['like'] as $likeFilterName)
         {
-            $value = $request->query->get($likeFilterName, "");
+            $value = isset($filter[$likeFilterName]) ? $filter[$likeFilterName] : null;
 
             if (empty($value))
             {
@@ -52,8 +54,7 @@ class Filter
 
         foreach($option['same'] as $sameFilterName)
         {
-
-            $value = $request->query->get($sameFilterName, "");
+            $value = isset($filter[$sameFilterName]) ? $filter[$sameFilterName] : null;
 
             if (empty($value))
             {
@@ -70,8 +71,8 @@ class Filter
 
         foreach($option['between'] as $betweenFilterName)
         {
-            $max = $request->query->get($betweenFilterName . "Max", "");
-            $min = $request->query->get($betweenFilterName . "Min", "");
+            $max = isset($filter[$betweenFilterName . "Max"]) ? $filter[$betweenFilterName . "Max"] : null;
+            $min = isset($filter[$betweenFilterName . "Min"]) ? $filter[$betweenFilterName . "Min"] : null;
 
             if (! empty($max))
             {

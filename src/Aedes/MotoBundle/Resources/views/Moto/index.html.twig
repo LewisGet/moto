@@ -3,6 +3,10 @@
 {% block body -%}
     <h1>Moto list</h1>
 
+	<div class="filter">
+		{{ form(filter) }}
+	</div>
+
 	<div class="count">
 		共 {{ pagination.getTotalItemCount }} 筆資料
 	</div>
