@@ -2,6 +2,8 @@
 
 namespace Aedes\ImageBundle\Entity;
 
+use Aedes\UserBundle\AedesUserBundle;
+use Aedes\UserBundle\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -18,6 +20,12 @@ class Image
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Aedes\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="create_by", referencedColumnName="id")
+     */
+    protected $createBy;
 
     // ..... other fields
 
@@ -48,6 +56,28 @@ class Image
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * setCreateBy
+     *
+     * @param $user
+     *
+     * @return  void
+     */
+    public function setCreateBy($user)
+    {
+        $this->createBy = $user;
+    }
+
+    /**
+     * getCreateBy
+     *
+     * @return  mixed
+     */
+    public function getCreateBy()
+    {
+        return $this->createBy;
     }
 
     /**

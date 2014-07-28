@@ -2,13 +2,16 @@
 
 namespace Aedes\MotoBundle\Form;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class MotoType extends AbstractType
 {
-        /**
+    public $user;
+
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -26,7 +29,14 @@ class MotoType extends AbstractType
             ->add('modifiedContent')
             ->add('tradingContent')
             ->add('brand')
-            ->add('image')
+            ->add('image', null, array(
+                'query_builder' =>  function(EntityRepository $er)
+                {
+                    return $er->createQueryBuilder('o')
+                        ->where('o.createBy = :user')
+                        ->setParameter("user", $this->user);
+                }
+            ))
             ->add('country')
             ->add('city')
             ->add('area')

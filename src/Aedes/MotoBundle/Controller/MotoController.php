@@ -114,7 +114,11 @@ class MotoController extends Controller
      */
     private function createCreateForm(Moto $entity)
     {
-        $form = $this->createForm(new MotoType(), $entity, array(
+        $motoType = new MotoType();
+
+        $motoType->user = $this->getUser();
+
+        $form = $this->createForm($motoType, $entity, array(
             'action' => $this->generateUrl('moto_create'),
             'method' => 'POST',
         ));
@@ -209,7 +213,11 @@ class MotoController extends Controller
     */
     private function createEditForm(Moto $entity)
     {
-        $form = $this->createForm(new MotoType(), $entity, array(
+        $motoType = new MotoType();
+
+        $motoType->user = $this->getUser();
+
+        $form = $this->createForm($motoType, $entity, array(
             'action' => $this->generateUrl('moto_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
