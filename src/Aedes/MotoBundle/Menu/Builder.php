@@ -37,6 +37,8 @@ class Builder extends ContainerAware
         }
         else
         {
+            $menu->addChild('新增圖片', array('route' => 'image_new'));
+            $menu->addChild('圖片管理', array('route' => 'image'));
             $menu->addChild('會員資料', array('route' => 'fos_user_profile_edit'));
             $menu->addChild('登出', array('route' => 'fos_user_security_logout'));
         }

@@ -47,7 +47,9 @@
                 <td>{{ entity.brand }}</td>
                 <td>
 					{% for image in entity.image %}
-						{{ image }}
+						<!--
+						<img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{ image.imageName }}" />
+						-->
 					{% endfor %}
 				</td>
                 <td>
