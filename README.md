@@ -67,6 +67,47 @@ Moto Bundle 預定功能
 6. 機車排序依照使用者經驗 ( 暫緩 )
 
 
+Symfony2 基本設定 與 指令
+====
+
+系統設定檔案
+
+```
+app/config/parameters.yml
+```
+
+## 資料庫操作
+
+### 操作界面
+
+```
+$ app/console
+```
+
+### 資料庫建立
+
+```
+$ app/console doctrine:database:create
+```
+
+### Schema 匯入
+
+```
+$ app/console doctrine:schema:create
+```
+
+### Assets 載入
+
+```
+$ app/console assets:install
+```
+
+### 清除快取
+
+```
+$ app/console cache:clear
+```
+
 資料表原始設計
 ----
 
