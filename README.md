@@ -65,3 +65,9 @@ Moto Bundle 預定功能
 4. 機車會員系統 ( 依賴 Aedes/UserBundle)
 5. 機車廣告區塊
 6. 機車排序依照使用者經驗 ( 暫緩 )
+
+
+資料表原始設計
+----
+
+https://docs.google.com/spreadsheets/d/1mcC1CDdeS775jyFpvLfKKoc499zPlVpW3YwYBJcqqBg/edit?usp=sharing
