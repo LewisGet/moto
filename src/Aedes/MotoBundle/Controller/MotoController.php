@@ -79,6 +79,9 @@ class MotoController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            $entity->setCreateBy($this->getUser());
+
             $em->persist($entity);
             $em->flush();
 

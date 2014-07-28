@@ -22,6 +22,19 @@ class Moto
     private $id;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Aedes\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="create_by", referencedColumnName="id")
+     */
+    protected $createBy;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createAt", type="datetime")
+     */
+    private $createAt;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
@@ -134,6 +147,11 @@ class Moto
     private $image;
 
 
+    public function __construct()
+    {
+        $this->createAt = new \DateTime('now');
+    }
+
     /**
      * Get id
      *
@@ -165,6 +183,53 @@ class Moto
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * setCreateBy
+     *
+     * @param $user
+     *
+     * @return  Moto
+     */
+    public function setCreateBy($user)
+    {
+        $this->createBy = $user;
+
+        return $this;
+    }
+
+    /**
+     * getCreateBy
+     *
+     * @return  mixed
+     */
+    public function getCreateBy()
+    {
+        return $this->createBy;
+    }
+
+    /**
+     * Set createAt
+     *
+     * @param \DateTime $createAt
+     * @return Moto
+     */
+    public function setCreateAt($createAt)
+    {
+        $this->createAt = $createAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createAt
+     *
+     * @return \DateTime
+     */
+    public function getCreateAt()
+    {
+        return $this->createAt;
     }
 
     /**

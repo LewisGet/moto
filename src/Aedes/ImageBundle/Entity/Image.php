@@ -27,6 +27,13 @@ class Image
      */
     protected $createBy;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createAt", type="datetime")
+     */
+    private $createAt;
+
     // ..... other fields
 
     /**
@@ -48,6 +55,11 @@ class Image
         return $this->imageName;
     }
 
+    public function __construct()
+    {
+        $this->createAt = new \DateTime('now');
+    }
+
     /**
      * getId
      *
@@ -63,11 +75,13 @@ class Image
      *
      * @param $user
      *
-     * @return  void
+     * @return  Image
      */
     public function setCreateBy($user)
     {
         $this->createBy = $user;
+
+        return $this;
     }
 
     /**
@@ -78,6 +92,29 @@ class Image
     public function getCreateBy()
     {
         return $this->createBy;
+    }
+
+    /**
+     * Set createAt
+     *
+     * @param \DateTime $createAt
+     * @return Image
+     */
+    public function setCreateAt($createAt)
+    {
+        $this->createAt = $createAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createAt
+     *
+     * @return \DateTime
+     */
+    public function getCreateAt()
+    {
+        return $this->createAt;
     }
 
     /**
