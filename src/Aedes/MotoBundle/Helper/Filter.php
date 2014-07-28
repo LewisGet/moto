@@ -31,7 +31,7 @@ class Filter
         $same = array();
         $between = array();
 
-        $queryBuilder = $repository->createQueryBuilder('o');
+        $queryBuilder = $repository->createQueryBuilder($alias);
 
         foreach($option['like'] as $likeFilterName)
         {
