@@ -22,3 +22,16 @@ image:
 
 form:
     optional:        "( 選填 )"
+    moto:
+        title:           "標題"
+        price:           "價格"
+        status:          "車況"
+        tag:             "車種"
+        displacement:    "排氣量"
+        fuel:            "引擎燃料"
+        years:           "年份"
+        mileage:         "里程數"
+        cooling:         "冷卻方式"
+        modifiedContent: "改裝內容"
+        tradingContent:  "交易內容"
+        brand:           "品牌"
