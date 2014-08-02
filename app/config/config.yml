@@ -31,6 +31,7 @@ twig:
     form:
         resources:
             - 'AedesImageBundle:Form:fields.html.twig'
+            - 'AedesMotoBundle:Form:fields.html.twig'
 
 # Assetic Configuration
 assetic:

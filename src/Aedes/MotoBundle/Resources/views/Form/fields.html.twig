@@ -1,0 +1,13 @@
+{% trans_default_domain "AedesMotoBundle" %}
+
+{% block label_asterisk %}
+	{% if required %}
+		{% if render_required_asterisk %}
+			<span>*</span>
+		{% endif %}
+	{% else %}
+		{% if render_optional_text %}
+			<span>{{ "form.optional"|trans }}</span>
+		{% endif %}
+	{% endif %}
+{% endblock label_asterisk %}
