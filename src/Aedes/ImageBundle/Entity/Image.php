@@ -30,7 +30,7 @@ class Image
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="createAt", type="datetime")
+     * @ORM\Column(name="create_at", type="datetime")
      */
     private $createAt;
 

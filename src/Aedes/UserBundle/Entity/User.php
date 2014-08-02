@@ -21,28 +21,28 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="mobile", type="string", length=25)
+     * @ORM\Column(name="mobile", type="string", length=25, nullable=true)
      */
     private $mobile;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="phone", type="string", length=25)
+     * @ORM\Column(name="phone", type="string", length=25, nullable=true)
      */
     private $phone;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="contact", type="text")
+     * @ORM\Column(name="contact", type="text", nullable=true)
      */
     private $contact;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ezTime", type="string", length=255)
+     * @ORM\Column(name="ezTime", type="string", length=255, nullable=true)
      */
     private $ezTime;
 
