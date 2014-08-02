@@ -37,6 +37,7 @@ class Builder extends ContainerAware
         }
         else
         {
+            $menu->addChild('我刊登的機車', array('route' => 'my_moto'));
             $menu->addChild('新增圖片', array('route' => 'image_new'));
             $menu->addChild('圖片管理', array('route' => 'image'));
             $menu->addChild('會員資料', array('route' => 'fos_user_profile_edit'));

@@ -90,6 +90,6 @@ class Filter
             $queryBuilder->andWhere(implode(" AND ", $between));
         }
 
-        return $queryBuilder->getQuery();
+        return $queryBuilder;
     }
 }

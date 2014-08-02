@@ -34,6 +34,40 @@ class MotoController extends Controller
      */
     public function indexAction()
     {
+        return $this->motoList(function($q){
+            return $q;
+        });
+    }
+
+    /**
+     * user moto Lists entities.
+     *
+     * @Route("/my", name="my_moto")
+     * @Method("GET")
+     * @Template("AedesMotoBundle:Moto:index.html.twig")
+     */
+    public function ownAction()
+    {
+        $user = $this->getUser();
+
+        return $this->motoList(
+            function($q) use ($user)
+            {
+                return $q->andWhere("o.createBy = :user")
+                    ->setParameter("user", $user);
+            }
+        );
+    }
+
+    /**
+     * motoList
+     *
+     * @param callback
+     *
+     * @return  array
+     */
+    public function motoList($parQuery)
+    {
         $em = $this->getDoctrine()->getManager();
         $request = $this->getRequest();
         $paginator  = $this->get('knp_paginator');
@@ -44,9 +78,10 @@ class MotoController extends Controller
             MotoFilter::listFilter()
         );
 
+        $query = $parQuery($query);
 
         $pagination = $paginator->paginate(
-            $query,
+            $query->getQuery(),
             $request->query->get('page', 1),
             10
         );
