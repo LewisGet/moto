@@ -1,5 +1,7 @@
 {% extends '::base.html.twig' %}
 
+{% trans_default_domain "AedesMotoBundle" %}
+
 {% block body -%}
     <h1>Moto list</h1>
 
@@ -19,18 +21,18 @@
         <thead>
             <tr>
                 <th>Id</th>
-				<th{% if pagination.isSorted('o.title') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Title', 'o.title') }}</th>
-                <th>Price</th>
-                <th>Status</th>
-                <th>Displacement</th>
-                <th>Fuel</th>
-                <th>Years</th>
-                <th>Mileage</th>
-                <th>Cooling</th>
-                <th>Modifiedcontent</th>
-                <th>Tradingcontent</th>
-                <th>Brand</th>
-                <th>Image</th>
+				<th{% if pagination.isSorted('o.title') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'moto.title'|trans, 'o.title') }}</th>
+                <th>{{ 'moto.price'|trans }}</th>
+                <th>{{ 'moto.status'|trans }}</th>
+                <th>{{ 'moto.displacement'|trans }}</th>
+                <th>{{ 'moto.fuel'|trans }}</th>
+                <th>{{ 'moto.years'|trans }}</th>
+                <th>{{ 'moto.mileage'|trans }}</th>
+                <th>{{ 'moto.cooling'|trans }}</th>
+                <th>{{ 'moto.modifiedContent'|trans }}</th>
+                <th>{{ 'moto.modifiedContent'|trans }}</th>
+                <th>{{ 'moto.brand'|trans }}</th>
+                <th>{{ 'image.image'|trans }}</th>
                 <th>Actions</th>
             </tr>
         </thead>
