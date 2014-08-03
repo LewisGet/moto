@@ -9,3 +9,9 @@
 /vendor/
 /bin/
 /composer.phar
+
+# PHPStorm
+.idea
+
+# Upload Image
+web/images/upload/*
