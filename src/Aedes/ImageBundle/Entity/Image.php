@@ -32,7 +32,7 @@ class Image
      *
      * @ORM\Column(name="create_at", type="datetime")
      */
-    private $createAt;
+    private $create_at;
 
     // ..... other fields
 
@@ -57,7 +57,7 @@ class Image
 
     public function __construct()
     {
-        $this->createAt = new \DateTime('now');
+        $this->create_at = new \DateTime('now');
     }
 
     /**
@@ -95,26 +95,26 @@ class Image
     }
 
     /**
-     * Set createAt
+     * Set create_at
      *
-     * @param \DateTime $createAt
+     * @param \DateTime $create_at
      * @return Image
      */
-    public function setCreateAt($createAt)
+    public function setCreateAt($create_at)
     {
-        $this->createAt = $createAt;
+        $this->create_at = $create_at;
 
         return $this;
     }
 
     /**
-     * Get createAt
+     * Get create_at
      *
      * @return \DateTime
      */
     public function getCreateAt()
     {
-        return $this->createAt;
+        return $this->create_at;
     }
 
     /**

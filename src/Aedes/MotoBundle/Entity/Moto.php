@@ -32,7 +32,7 @@ class Moto
      *
      * @ORM\Column(name="create_at", type="datetime")
      */
-    private $createAt;
+    private $create_at;
 
     /**
      * @var string
@@ -149,7 +149,7 @@ class Moto
 
     public function __construct()
     {
-        $this->createAt = new \DateTime('now');
+        $this->create_at = new \DateTime('now');
     }
 
     /**
@@ -210,26 +210,26 @@ class Moto
     }
 
     /**
-     * Set createAt
+     * Set create_at
      *
-     * @param \DateTime $createAt
+     * @param \DateTime $create_at
      * @return Moto
      */
-    public function setCreateAt($createAt)
+    public function setCreateAt($create_at)
     {
-        $this->createAt = $createAt;
+        $this->create_at = $create_at;
 
         return $this;
     }
 
     /**
-     * Get createAt
+     * Get create_at
      *
      * @return \DateTime
      */
     public function getCreateAt()
     {
-        return $this->createAt;
+        return $this->create_at;
     }
 
     /**
