@@ -35,7 +35,7 @@ class Filter
         {
             if (isset($option[$type]))
             {
-                $tmp = static::same($alias, $option[$type], $filter);
+                $tmp = static::$type($alias, $option[$type], $filter);
 
                 $where = array_merge($where, $tmp);
             }
