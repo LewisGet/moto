@@ -22,37 +22,40 @@ class Filter
      * between => between 內所有值皆為字串，他將使用 request 值加上 Max 與 Min 參數去 dql 塞選之間值
      *            如對應名稱無值時不設定參數
      *
+     *
      * @return  Mixed
      */
     public static function find(ObjectRepository $repository, Request $request, $alias = "o",
                                 array $option = array("filterName" => "filter", "like" => array("title"), "same" => array(), "between" => array()))
     {
-        $like = array();
-        $same = array();
-        $between = array();
-
         $filter = $request->query->get($option['filterName'], array());
+        $where = array();
+
+        foreach(array("same", "like", "between") as $type)
+        {
+            if (isset($option[$type]))
+            {
+                $tmp = static::same($alias, $option[$type], $filter);
+
+                $where = array_merge($where, $tmp);
+            }
+        }
 
         $queryBuilder = $repository->createQueryBuilder($alias);
 
-        foreach($option['like'] as $likeFilterName)
+        if (! empty($where))
         {
-            $value = isset($filter[$likeFilterName]) ? $filter[$likeFilterName] : null;
-
-            if (empty($value))
-            {
-                continue;
-            }
-
-            $like[] = "{$alias}.{$likeFilterName} LIKE '%{$value}%'";
+            $queryBuilder->andWhere(implode(" AND ", $where));
         }
 
-        if (! empty($like))
-        {
-            $queryBuilder->where(implode(" OR ", $like));
-        }
+        return $queryBuilder;
+    }
 
-        foreach($option['same'] as $sameFilterName)
+    public static function same($queryAlias, $sameOption, $filter)
+    {
+        $same = array();
+
+        foreach($sameOption as $sameFilterName)
         {
             $value = isset($filter[$sameFilterName]) ? $filter[$sameFilterName] : null;
 
@@ -61,35 +64,51 @@ class Filter
                 continue;
             }
 
-            $same[] = "{$alias}.{$sameFilterName} = '{$value}'";
+            $same[] = "{$queryAlias}.{$sameFilterName} = '{$value}'";
         }
 
-        if (! empty($same))
+        return $same;
+    }
+
+    public static function like($queryAlias, $likeOption, $filter)
+    {
+        $like = array();
+
+        foreach($likeOption as $likeFilterName)
         {
-            $queryBuilder->andWhere(implode(" AND ", $same));
+            $value = isset($filter[$likeFilterName]) ? $filter[$likeFilterName] : null;
+
+            if (empty($value))
+            {
+                continue;
+            }
+
+            $like[] = "{$queryAlias}.{$likeFilterName} LIKE '%{$value}%'";
         }
 
-        foreach($option['between'] as $betweenFilterName)
+        return $like;
+    }
+
+    public static function between($queryAlias, $betweenOption, $filter)
+    {
+        $between = array();
+
+        foreach($betweenOption as $betweenFilterName)
         {
             $max = isset($filter[$betweenFilterName . "Max"]) ? $filter[$betweenFilterName . "Max"] : null;
             $min = isset($filter[$betweenFilterName . "Min"]) ? $filter[$betweenFilterName . "Min"] : null;
 
             if (! empty($max))
             {
-                $between[] = "{$alias}.{$betweenFilterName} <= '{$max}'";
+                $between[] = "{$queryAlias}.{$betweenFilterName} <= '{$max}'";
             }
 
             if (! empty($min))
             {
-                $between[] = "{$alias}.{$betweenFilterName} >= '{$min}'";
+                $between[] = "{$queryAlias}.{$betweenFilterName} >= '{$min}'";
             }
         }
 
-        if (! empty($between))
-        {
-            $queryBuilder->andWhere(implode(" AND ", $between));
-        }
-
-        return $queryBuilder;
+        return $between;
     }
 }
