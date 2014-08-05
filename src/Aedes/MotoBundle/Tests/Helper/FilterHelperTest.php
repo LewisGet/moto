@@ -75,4 +75,28 @@ class FilterHelperTest extends WebTestCase
 
         $this->assertSame($likeFilter, $return);
     }
+
+    public function testMultipleSame()
+    {
+        $multipleSame = array(
+            'id',
+            'status',
+            'noMatch'
+        );
+
+        $request = array(
+            'id' => array(1, 2),
+            'status' => array(3, 4),
+            'noFitler' => array(5, 6)
+        );
+
+        $return = array(
+            'o.id = \'1\' OR o.id = \'2\'',
+            'o.status = \'3\' OR o.status = \'4\''
+        );
+
+        $multipleSameFilter = Filter::multipleSame("o", $multipleSame, $request);
+
+        $this->assertSame($multipleSameFilter, $return);
+    }
 }

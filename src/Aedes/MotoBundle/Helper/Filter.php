@@ -111,4 +111,32 @@ class Filter
 
         return $between;
     }
+
+    public static function multipleSame($queryAlias, $multipleSameOption, $filter)
+    {
+        $multipleSame = array();
+
+        foreach($multipleSameOption as $multipleSameName)
+        {
+            $value = isset($filter[$multipleSameName]) ? $filter[$multipleSameName] : null;
+            $tmpWhereCondition = array();
+
+            if (empty($value) || ! is_array($value))
+            {
+                continue;
+            }
+
+            foreach ($value as $oneSame)
+            {
+                $tmpWhereCondition[] = "{$queryAlias}.{$multipleSameName} = '{$oneSame}'";
+            }
+
+            if (! empty($tmpWhereCondition))
+            {
+                $multipleSame[] = implode(" OR ", $tmpWhereCondition);
+            }
+        }
+
+        return $multipleSame;
+    }
 }
